@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
+
 <head>
-    <title>Checkout Express</title>
+    <title>Checkout Plus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha512.js"></script>
-    <script id="bolt" src="https://pp33admin.payu.in/bolt/bolt.min.js" bolt-color="af636b" bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"></script>
+    <script id="bolt" src="../bolt.js" bolt-color="af636b"
+        bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"></script>
+    <!-- <script id="bolt" src="../js/bolt.min.js" bolt-color="af636b"
+        bolt-logo="http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png"></script> -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="../common/assets/css/modal.css">
 </head>
@@ -15,7 +19,8 @@
         padding: 0;
     }
 </style>
-<body class="payuDemopage" id="payuDemopage">
+
+<body class="payuDemopage">
     <div id="txnStatusModal" class ="modal"> 
         <div id="success" style="display: none;">
             <div class="modal-content">
@@ -86,7 +91,6 @@
         </div>
          
     </div>
-
     <header>
         <div class="layoutMain">
             <div class="logo-box center-align">
@@ -108,7 +112,7 @@
                             fill="#10846D" />
                     </svg></i>
                 <span>Demo Page</span>
-            </div>        
+            </div>
         </div>
     </header>
     <div class="middleMain">
@@ -118,20 +122,20 @@
             </div>
         </div>
         <div class="middleMain_left">
-            <h5 class="middleMain_left-heading">Payu Checkout Express<br />
+            <h5 class="middleMain_left-heading">Try payment using Checkout Plus<br />
                 <small>Earbuds</small>
             </h5>
-            <p class="middleMain_left-detailing">This is a sample product description for earbuds MSI MPG Trident 3</p>
+            <p class="middleMain_left-detailing">This is a dummy product description for earbuds MSI MPG Trident 3
+                10SC-005AU Intel i7 10700F, 2060 SUPER, 16GB RAM, 512GB SSD, 2TB HDD</p>
             <ol class="middleMain_left-list">
                 <li>Enhanced Sound Experience: The buds comes with 12.4mm driver unit, which delivers crisp clear and
                     enhanced bass quality sound experience</li>
                 <li>Sound Master Equalizers: Unique audio profiles -Bold, Bass & Balance</li>
                 <li>IP55 Water & Sweat Resistance</li>
             </ol>
-            <h4>Price:  <span>&#8377;</span>3500 </h4>
-
+            <h4>Price: <span>&#8377;</span>1 </h4>
             <div class="btn-row">
-                <button class="default-btn" id="generateV2Hash" type="button">Buy Now</button>
+                <button class="default-btn" id="generateHash" type="button">Buy Now</button>
             </div>
             <p class="middleMain_left-detailing"><small>This website is strictly restricted for demonstration and this
                     is not an actual product purchase. Payment to be made with live payment instruments and the amount
@@ -249,78 +253,45 @@
         </div>
     </footer>
     <script type="text/javascript" src="../common/scripts/transactionStatusModal.js"></script>
-    <script>   
-        function v2Hash() {
-            const date = new Date().toGMTString();
-            const  key = "KOEfPI";
-            const  txnid = 'mtx' + new Date().getTime();
-            const  amount = "1";
-            const  phone = "1234567890";
-            const  firstname = "surbhi";
-            const  lastname = "soni";
-            const  email = "";
-            const  salt = "Rfxnm3ET";
-            const  udf1 = "";
-            const  udf2 = "";
-            const  udf3 = "";
-            const  udf4 = "";
-            const  udf5 = "";
-            const  isCheckoutExpress = true;
-            const icp_source = "express";
-            const  productinfo = "EXPRESS";
+    <script>
+        function hash() {
+            const key = 'O15vkB';
+            const txnid = 'mtx' + new Date().getTime();
+            const amount = "1";
+            const phone = "1234567890";
+            const firstname = "surbhi";
+            const lastname = "soni";
+            const productinfo = "Bolt";
+            const email = "test@example.com";
+            const salt = "LU1EhObh";
+            const udf1 = "";
+            const udf2 = "";
+            const udf3 = "";
+            const udf4 = "";
+            const udf5 = "";
             const surl = "http://pp42.thirdparty.com/testresponse.php";
             const furl = "http://pp42.thirdparty.com/testresponse.php";
-            const orderid = new Date().getTime().toString(36).slice(2, 7);;
-            const cart_details = {
-                "amount": "1",
-                "items": 1,
-                "sku_details": [
-                    {
-                        "offer_key": [],
-                        "amount_per_sku": "1",
-                        "quantity": "1",
-                        "sku_id": "Apple69J",
-                        "sku_name": "Earbuds",
-                        "logo": "https://payu.in/demo/checkoutexpress/utils/images/MicrosoftTeams-image%20(31).png"
-                    },
-                ]
-            };
-            const  hashString = key + '|' + txnid + '|' + amount + '|' + productinfo + '|' + firstname + '|' + email + '|' + udf1 + '|' + udf2 + '|' + udf3 + '|' + udf4 + '|' + udf5 + '||||||' + salt;
+            const hashString = key + '|' + txnid + '|' + amount + '|' + productinfo + '|' + firstname + '|' + email + '|' + udf1 + '|' + udf2 + '|' + udf3 + '|' + udf4 + '|' + udf5 + '||||||' + salt;
             const hash = CryptoJS.SHA512(hashString).toString(CryptoJS.enc.Hex);
-            const expressData = {
+            const icpData = {
                 key: key,
-                hash: hash,
                 txnid: txnid,
+                hash: hash,
                 amount: amount,
-                phone: phone,
                 firstname: firstname,
-                lastname: lastname,
                 email: email,
+                phone: phone,
+                productinfo: productinfo,
+                surl: surl,
+                furl: furl,
+                lastname: lastname,
                 udf1: udf1,
                 udf2: udf2,
                 udf3: udf3,
                 udf4: udf4,
-                udf5: udf5,
-                isCheckoutExpress: true,
-                icp_source: "express",
-                productinfo: "EXPRESS",
-                surl: surl,
-                furl: furl,
-                orderid: orderid,
-                cart_details: cart_details
+                udf5: udf5
             }
-            const AUTH_TYPE = 'sha512';
-            const data = JSON.stringify(expressData);
-            const hash_string = data + '|' + date + '|' + salt;
-            const v2hash = CryptoJS.SHA512(hash_string).toString(CryptoJS.enc.Hex);
-            const  authHeader = 'hmac username="' + key + '", ' + 'algorithm="' + AUTH_TYPE + '", headers="date", signature="' + v2hash + '"';
-            const  expressRequestObj = {
-                data: data,
-                date: date,
-                isCheckoutExpress: true,
-                v2Hash: authHeader
-            }
-            bolt.launch(expressRequestObj, {
+            bolt.launch(icpData, {
                 responseHandler: function (get) {
                     openModal(get.response);
                 },
@@ -328,8 +299,9 @@
                     alert(get.message);
                 }
             });
-        }
-        $(document).on('click', '#generateV2Hash', function () { v2Hash(); });
+        };
+        $(document).on('click', '#generateHash', function () { hash(); });
     </script>
 </body>
+
 </html>

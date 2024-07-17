@@ -1,0 +1,213 @@
+@import "partials/variables";
+@import "mixin.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+html {
+    height: 100%;
+}
+
+body.payuDemopage {
+    font-family: "Avenir", sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.layoutMain {}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+header {
+    border-bottom: 1px #A2A6B0 solid;
+    padding: 32px 84px;
+}
+
+.center-align {
+    @include flex-center;
+}
+
+.logo-box {
+    gap: 10px;
+    color: $green;
+}
+
+.middleMain {
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+   flex-grow: 1;
+    &_left {
+        width: 60%;
+        background: $light-green;
+        padding: 96px 100px 100px 84px;
+
+        &-heading {
+            font-size: 24px;
+            font-weight: 500;
+            color: $black1;
+            padding-bottom: 20px;
+
+            small {
+                font-size: 12px;
+                font-weight: 300;
+            }
+        }
+
+        &-detailing {
+            font-size: 16px;
+            line-height: 25px;
+            font-weight: 300;
+
+            small {
+                font-size: 14px;
+                line-height: 22px;
+                display: inline-block;
+            }
+        }
+
+        &-list {
+            padding: 21px 0 45px 20px;
+
+            li {
+                list-style: disc;
+                font-size: 16px;
+                line-height: 25px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    &_right {
+        position: relative;
+        width: 40%;
+        height: 100%;
+        background: $white;
+        padding: 66px 23px;
+        @include flex-space-around;
+        align-items: unset;
+
+        &-iconsBlocks {
+            position: absolute;
+            left: 22px;
+            top: 66px;
+            width: 30px;
+
+            li {
+                cursor: pointer;
+            }
+        }
+
+        &-productImg {
+            max-width: 329px;
+            height: 409px;
+
+            img {
+                width: 100%
+            }
+        }
+    }
+}
+
+.btn-row {
+    @include flex-center;
+    gap: 20px;
+    padding-bottom: 22px;
+}
+
+.default-btn {
+    border-radius: 4px;
+    background: $green;
+    color: $white;
+    padding: 14px 10px;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.192px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    padding: 0 84px 0 84px;
+    border-top: 1px $light-grey4 solid;
+    margin-top: auto;
+
+    a {
+        color: $light-grey;
+        text-decoration: none;
+    }
+}
+
+.footer-main {
+    @include flex-space-between;
+    min-height: 52px;
+    flex-direction: row-reverse
+}
+
+.footer-left {
+    @include flex-center;
+    font-size: 12px;
+    gap: 10px;
+    color: $light-grey;
+}
+
+.footer-right {
+    @include flex-center;
+}
+
+ul.pymt-security-logo {
+    @include flex-center;
+    gap: 15px;
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px;
+    }
+
+    .middleMain {
+        flex-wrap: wrap;
+        &_left {
+            padding: 20px;
+            flex: 1 0 100%;
+        }
+
+        &_right {
+            width: 100%;
+            padding: 20px;
+            flex: 1;
+            height: auto;
+        }
+    }
+
+    .btn-row {
+        flex-wrap: wrap;
+
+        .default-btn {
+            flex: 1 0 100%;
+        }
+    }
+
+    footer {
+        padding: 20px;
+    }
+
+    .footer-main {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
