@@ -1,0 +1,42 @@
+@mixin flex-space-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+@mixin flex-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex {
+    display: flex;
+}
+@mixin flex-auto {
+    flex: auto;
+}
+@mixin bd-radius ($bd_value) {
+    -webkit-border-radius: $bd_value;
+    -moz-border-radius: $bd_value;
+    border-radius: $bd_value;
+
+}
+@mixin flex-wrap {
+    flex-wrap: wrap;
+}
+@mixin flex-end{
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+@mixin flex-start{
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+
